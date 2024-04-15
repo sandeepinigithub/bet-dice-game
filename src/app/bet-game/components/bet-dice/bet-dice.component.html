@@ -1,0 +1,42 @@
+<div class="bet-dice-container p-4">
+    <div class="bet-dice-wrapper mt-2">
+        <h2 class="heading">Bet and Dice Game</h2>
+        <div class="game-wrapper">
+            <div class="amount-wrapper">
+                <span class="amount mt-4">Amount(in Dollars) : {{amount}} </span>
+                <span class="bet-amount amount mt-4 ms-5">Bet Amount(in Dollars) : {{betAmount}} </span>
+                <button class="btn btn-secondary ms-5" (click)="onReset()">Reset</button>
+                <button class="btn btn-primary ms-5" (click)="onBet()">Bet</button>
+            </div>
+            <!-- ++++++ Take Amount For Bet +++ -->
+            <h3 class="dice-face-heading mt-2">Click to bet amount</h3>
+            <div class="dice-face-warpper d-flex">
+                <div class="dice-faces m-2" *ngFor="let face of diceFaces; let diceIndex = index;"
+                    (click)="onFaceBet(diceIndex)">
+                    <p class="dice d-flex justify-content-center align-items-center">
+                        {{face?.diceFace}}
+                    </p>
+                    {{face?.value}}
+
+                </div>
+            </div>
+
+            <h3 class="dice-face-heading mt-2">Dice Value</h3>
+            <div class="dice-face-warpper d-flex" *ngIf="diceValue > 0">
+                <div class="dice-faces m-2">
+                    <p class="dice d-flex justify-content-center align-items-center">
+                        {{diceValue}}
+                    </p>
+
+                </div>
+            </div>
+
+            <h3 class="dice-face-heading mt-4">Result</h3>
+            <div class="win-lose" *ngIf="diceValue > 0">
+                <h4 *ngIf="winAmount != 0">You won !!!!</h4>
+                <h4 *ngIf="winAmount == 0">You did not win this time  !!!!</h4>
+            </div>
+
+        </div>
+    </div>
+</div>
